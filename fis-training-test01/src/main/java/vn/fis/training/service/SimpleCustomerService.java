@@ -82,6 +82,21 @@ public class SimpleCustomerService  implements CustomerService {
         if (isNullOrEmpty((customer.getMobile()))){
             throw new InvalidCustomerException(customer,"Mobile is empty");
         }
+        if(isNullOrEmpty(customer.getName())){
+            throw new InvalidCustomerException(customer,"Customer Name is empty");
+        }
+        if(isNullOrEmpty(String.valueOf(customer.getBirthDay()))){
+            throw new InvalidCustomerException(customer,"Customer Birth Day is empty");
+        }
+        if(isNullOrEmpty(String.valueOf(customer.getStatus()))){
+            throw new InvalidCustomerException(customer,"Customer Status is empty");
+        }
+        LocalDate now = LocalDate.now();
+        Period actualAge= Period.between(customer.getBirthDay(),now);
+        double age = actualAge.getYears();
+        if(age<10){
+            throw new InvalidCustomerException(customer,"Customer's age is below 10");
+        }
         //
     }
 
@@ -126,6 +141,10 @@ public class SimpleCustomerService  implements CustomerService {
     @Override
     public List<SummaryCustomerByAgeDTO> summaryCustomerByAgeOrderByAgeDesc() {
         //TODO: Implement method tho dung dac ta cua CustomerService interface
+        return summaryCustomerByAgeOrderByAgeDesc()
+                .stream()
+                .sorted(Comparator.comparing(SummaryCustomerByAgeDTO::getAge))
+                .collect(Collectors.toList());
         return null;
     }
 

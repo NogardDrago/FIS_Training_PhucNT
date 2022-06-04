@@ -19,20 +19,10 @@ public final class InMemoryCustomerStore {
      * @throws vn.fis.training.exception.ApplicationException tuong ung.
      */
     public Customer insertOrUpdate(Customer customer) throws DuplicateCustomerException {
-        try{
-            if (!mapCustomer.containsKey(customer.getId())){
-                SimpleCustomerService temp = new SimpleCustomerService();
-                customer = temp.createCustomer(customer);
-                mapCustomer.put(customer.getId(), customer);
-                //TODO: Implement theo dac ta
-                return  customer;
-            }
-        }
-        catch (DuplicateCustomerException e){
-            e.getErrorCode();
-        }
-        //mapCustomer.put(customer.getId(),customer);
-        return null;
+        mapCustomer.put(customer.getId(), customer);
+        //TODO: Implement theo dac ta
+        return  customer;
+
     }
 
     /**
