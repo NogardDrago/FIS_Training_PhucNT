@@ -1,4 +1,5 @@
-package com.fis.criminalcase.dao.entity;
+package fis.java.criminal.enitity;
+
 import java.time.*;
 
 public abstract class AbstractEntity {

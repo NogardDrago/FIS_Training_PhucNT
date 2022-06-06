@@ -1,10 +1,8 @@
-package com.fis.criminalcase.dao.entity;
+package fis.java.criminal.model;
 
-import com.fis.criminalcase.dao.CaseStatus;
-import com.fis.criminalcase.dao.CaseType;
-import com.fis.criminalcase.dao.Detective;
-import com.fis.criminalcase.dao.Evidence;
-import com.fis.criminalcase.dao.entity.AbstractEntity;
+import fis.java.criminal.enitity.AbstractEntity;
+import fis.java.criminal.model.enums.CaseStatus;
+import fis.java.criminal.model.enums.CaseType;
 
 import java.util.Set;
 

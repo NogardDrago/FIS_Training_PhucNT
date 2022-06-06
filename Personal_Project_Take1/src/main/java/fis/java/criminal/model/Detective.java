@@ -1,9 +1,9 @@
-package com.fis.criminalcase.dao;
+package fis.java.criminal.model;
 
-import com.fis.criminalcase.dao.entity.AbstractEntity;
-import com.fis.criminalcase.dao.entity.CriminalCase;
-import com.fis.criminalcase.dao.entity.Person;
-import com.fis.criminalcase.dao.entity.TrackEntry;
+import fis.java.criminal.enitity.AbstractEntity;
+import fis.java.criminal.model.CriminalCase;
+import fis.java.criminal.model.enums.EmploymentStatus;
+import fis.java.criminal.model.enums.Rank;
 
 import java.util.Set;
 

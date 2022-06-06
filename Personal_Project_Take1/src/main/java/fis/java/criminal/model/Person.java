@@ -1,6 +1,6 @@
-package com.fis.criminalcase.dao.entity;
+package fis.java.criminal.model;
 
-import com.fis.criminalcase.dao.entity.AbstractEntity;
+import fis.java.criminal.enitity.AbstractEntity;
 
 import java.time.LocalDateTime;
 
