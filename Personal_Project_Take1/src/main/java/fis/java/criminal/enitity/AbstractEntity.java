@@ -10,7 +10,7 @@ public abstract class AbstractEntity {
 
     public AbstractEntity() {
     }
-
+    
     public long getId() {
         return id;
     }
