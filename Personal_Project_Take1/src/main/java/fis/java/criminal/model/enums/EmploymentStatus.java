@@ -1,4 +1,4 @@
-package com.fis.criminalcase.dao;
+package fis.java.criminal.model.enums;
 
 public enum EmploymentStatus {
     ACTIVE,
