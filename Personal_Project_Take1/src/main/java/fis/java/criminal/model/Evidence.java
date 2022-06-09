@@ -16,7 +16,6 @@ public class Evidence extends AbstractEntity {
 
     public Evidence() {
     }
-
     public CriminalCase getCriminalCase() {
         return criminalCase;
     }
