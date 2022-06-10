@@ -3,10 +3,10 @@ package fis.java.criminal.enitity;
 import java.time.*;
 
 public abstract class AbstractEntity {
-    public long id;
-    public int version;
-    public LocalDateTime createdAt;
-    public LocalDateTime modifiedAt;
+    private long id;
+    private int version;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 
     public AbstractEntity() {
     }

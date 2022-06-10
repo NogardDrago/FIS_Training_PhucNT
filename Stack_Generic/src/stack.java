@@ -11,13 +11,12 @@ class stack<T> {
     void push(T X)
     {
         if (top + 1 == size) {
-            System.out.println("Stack Overflow");
+            System.out.println("Stack day");
         }
         else {
             top = top + 1;
             if (A.size() > top)
                 A.set(top, X);
-
             else
                 A.add(X);
         }
@@ -25,7 +24,7 @@ class stack<T> {
     T top()
     {
         if (top == -1) {
-            System.out.println("Stack Underflow");
+            System.out.println("Stack trong");
             return null;
         }
         else
@@ -34,7 +33,7 @@ class stack<T> {
     void pop()
     {
         if (top == -1) {
-            System.out.println("Stack Underflow");
+            System.out.println("Stack trong");
         }
         else
             top--;
@@ -43,11 +42,11 @@ class stack<T> {
     @Override
     public String toString()
     {
-        String Ans = "";
+        String element = "";
         for (int i = 0; i < top; i++) {
-            Ans += String.valueOf(A.get(i)) + "->";
+            element += String.valueOf(A.get(i)) + "->";
         }
-        Ans += String.valueOf(A.get(top));
-        return Ans;
+        element += String.valueOf(A.get(top));
+        return element;
     }
 }

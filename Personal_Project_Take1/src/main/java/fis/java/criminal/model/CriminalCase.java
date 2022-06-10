@@ -4,6 +4,7 @@ import fis.java.criminal.enitity.AbstractEntity;
 import fis.java.criminal.model.enums.CaseStatus;
 import fis.java.criminal.model.enums.CaseType;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class CriminalCase extends AbstractEntity {
@@ -90,5 +91,23 @@ public class CriminalCase extends AbstractEntity {
 
     public void setAssigned(Set<Detective> assigned) {
         this.assigned = assigned;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CriminalCase that = (CriminalCase) o;
+        return number.equals(that.number) && type == that.type && shortDescription.equals(that.shortDescription) && detailedDescription.equals(that.detailedDescription) && status == that.status && notes.equals(that.notes) && evidenceSet.equals(that.evidenceSet) && leadInvestigator.equals(that.leadInvestigator) && assigned.equals(that.assigned);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, type, shortDescription, detailedDescription, status, notes, evidenceSet, leadInvestigator, assigned);
+    }
+
+    public void replaceWith(CriminalCase criminalCase){
+        this.notes = criminalCase.notes;
+
     }
 }
