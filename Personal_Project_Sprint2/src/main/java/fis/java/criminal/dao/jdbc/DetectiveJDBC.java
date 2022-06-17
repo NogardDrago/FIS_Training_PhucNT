@@ -45,7 +45,6 @@ public class DetectiveJDBC implements IDetectiveDAO {
         }
         return detectiveList;
     }
-
     @Override
     public void save(Detective detective) {
         String query = "INSERT INTO criminalcase.detective_list\n" +
