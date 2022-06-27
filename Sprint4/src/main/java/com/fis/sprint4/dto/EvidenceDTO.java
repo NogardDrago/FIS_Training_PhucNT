@@ -1,5 +1,7 @@
 package com.fis.sprint4.dto;
 
+import java.util.Set;
+
 public class EvidenceDTO {
     private Long id;
     private String createdDate;
