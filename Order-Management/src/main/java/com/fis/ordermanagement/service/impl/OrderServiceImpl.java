@@ -5,6 +5,7 @@ import com.fis.ordermanagement.dto.CreateOrderDTO;
 import com.fis.ordermanagement.dto.OrderDTO;
 import com.fis.ordermanagement.dto.RemoveItemDTO;
 import com.fis.ordermanagement.exception.CanNotDeletePaidOrderException;
+import com.fis.ordermanagement.exception.CanOnlyAddToCreatedOrderException;
 import com.fis.ordermanagement.exception.OrderNotFoundException;
 import com.fis.ordermanagement.exception.OutOfProductException;
 import com.fis.ordermanagement.model.Customer;
@@ -92,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = findById(id);
         if (OrderStatus.PAID.equals(order.getStatus())) {
             try {
-                throw new CanNotDeletePaidOrderException("Can not delete Order has status is CREATED!");
+                throw new CanNotDeletePaidOrderException("Cant delete Paid order");
             } catch (CanNotDeletePaidOrderException e) {
                 throw new RuntimeException(e);
             }
@@ -105,23 +106,23 @@ public class OrderServiceImpl implements OrderService {
         Order order = findById(addOrderItemDTO.getOrderId());
         if (null == order) {
             try {
-                throw new OrderNotFoundException(String.format("Not found order with id %s", addOrderItemDTO.getOrderId()));
+                throw new OrderNotFoundException(String.format("Cant find order with id %s", addOrderItemDTO.getOrderId()));
             } catch (OrderNotFoundException e) {
                 throw new RuntimeException(e);
             }
         }
         if (!OrderStatus.CREATED.equals(order.getStatus())) {
             try {
-                throw new CanOnlyAddOrderItemToCreatedOrderException("Can only add order item to order has status is CREATED!");
-            } catch (CanOnlyAddOrderItemToCreatedOrderException e) {
+                throw new CanOnlyAddToCreatedOrderException("Can only add order item to Created order");
+            } catch (CanOnlyAddToCreatedOrderException e) {
                 throw new RuntimeException(e);
             }
         }
         Product product = productService.findById(addOrderItemDTO.getProductId());
-        if (product.getAvaiable() < addOrderItemDTO.getQuantity()) {
+        if (product.getAvailable() < addOrderItemDTO.getQuantity()) {
             try {
-                throw new ProductNotEnoughtException(String.format("Product %s Not Enought !!", product.getName()));
-            } catch (ProductNotEnoughtException e) {
+                throw new OutOfProductException(String.format("Out of %s product", product.getName()));
+            } catch (OutOfProductException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -132,10 +133,10 @@ public class OrderServiceImpl implements OrderService {
                 .product(product)
                 .build();
         order.setTotalAmount(order.getTotalAmount() + newOrderItem.getAmount());
-        order.getOrderItems().add(newOrderItem);
+        order.getOrderItem().add(newOrderItem);
         orderRepo.save(order);
-        product.setAvaiable(product.getAvaiable() - addOrderItemDTO.getQuantity());
-        productService.update(product);
+        product.setAvailable(product.getAvailable() - addOrderItemDTO.getQuantity());
+        productService.save(product);
         return findById(addOrderItemDTO.getOrderId());
     }
 
