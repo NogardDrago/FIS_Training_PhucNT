@@ -1,6 +1,7 @@
 package com.fis.ordermanagement.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +25,7 @@ public class Customer {
     @Column(name="name")
     private String name;
     @NotNull
-    @Column(name="mobile",unique = true)
+    @Column(name="mobile",unique = true,length=10)
     private String mobile;
     @NotNull
     @Column(name="address",unique = true,length = 100)

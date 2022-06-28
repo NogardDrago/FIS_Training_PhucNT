@@ -1,8 +1,9 @@
 package com.fis.ordermanagement.exception;
 
 public class AppConstant {
-    public static final String INVALID_CUSTOMER = "INVALID_CUSTOMER";
-    public static final String INVALID_STATUS_CUSTOMER = "INVALID_STATUS_CUSTOMER";
-    public static final String NOT_FOUND_CUSTOMER = "NOT_FOUND_CUSTOMER";
-    public static final String NOT_FOUND_ORDER = "NOT_FOUND_ORDER";
+    public static final String CUSTOMER_NOT_FOUND = "CUSTOMER_NOT_FOUND";
+    public static final String ORDER_NOT_FOUND = "ORDER NOT FOUND";
+    public static final String PRODUCT_NOT_FOUND = "PRODUCT_NOT_FOUND";
+    public static final String OUT_OF_PRODUCT = "OUT_OF_PRODUCT";
+    public static final String CAN_NOT_DELETE_PAID_ORDER = "CAN_NOT_DELETE_PAID_ORDER";
 }

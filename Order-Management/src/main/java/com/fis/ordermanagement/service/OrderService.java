@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 public interface OrderService {
     Order save(CreateOrderDTO createOrderDTO);
     Page<OrderDTO> findAll(Pageable pageable);
-    Order findById(Long orderId);
+    Order findById(Long id);
     void delete(Long orderId);
     Order addOrderItem(AddOrderItemDTO addOrderItemDTO);
     Order removeOrderItem(RemoveItemDTO removeItemDTO);

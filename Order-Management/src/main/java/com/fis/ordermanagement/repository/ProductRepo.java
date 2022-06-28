@@ -1,4 +1,7 @@
 package com.fis.ordermanagement.repository;
 
-public interface ProductRepo {
+import com.fis.ordermanagement.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepo extends JpaRepository<Product, Long> {
 }

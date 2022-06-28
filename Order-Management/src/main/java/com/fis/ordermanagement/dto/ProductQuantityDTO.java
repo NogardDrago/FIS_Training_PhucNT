@@ -6,15 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateOrderDTO {
+public class ProductQuantityDTO {
     @NotBlank
-    private Long customerId;
+    private Long productId;
     @NotBlank
-    private ArrayList<ProductQuantityDTO> orderItemInfo;
+    private Long quantity;
 }

@@ -1,6 +1,7 @@
 package com.fis.ordermanagement.service.impl;
 
 import com.fis.ordermanagement.dto.CustomerDTO;
+import com.fis.ordermanagement.dto.NewCustomerDTO;
 import com.fis.ordermanagement.exception.CustomerNotFoundException;
 import com.fis.ordermanagement.model.Customer;
 import com.fis.ordermanagement.repository.CustomerRepo;
@@ -11,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Slf4j
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -21,19 +21,31 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepo=customerRepo;
     }
     @Override
-    public Customer save(Customer customer) {
-        return customerRepo.save(customer);
+    public Page<CustomerDTO> save(NewCustomerDTO customerDTO, Pageable pageable) {
+        Customer customer = Customer.builder()
+                .name(customerDTO.getName())
+                .mobile(customerDTO.getMobile())
+                .address(customerDTO.getAddress())
+                .build();
+        customerRepo.save(customer);
+        return findAll(pageable);
     }
 
     @Override
     public Page<CustomerDTO> findAll(Pageable pageable) {
-        log.info("Query all customer: PageNumber: {}, PageSize: {}", pageable.getPageNumber(), pageable.getPageSize());
+        log.info("All customer: PageNumber: {}, PageSize: {}", pageable.getPageNumber(), pageable.getPageSize());
         return customerRepo.findAll(pageable).map(CustomerDTO.Mapper::mapCustomer);
     }
 
     @Override
     public Customer findById(Long id) {
-        return customerRepo.findById(id).orElseThrow();
+        return customerRepo.findById(id).orElseThrow(() -> {
+            try {
+                throw new CustomerNotFoundException(String.format("Cant find customer id %s",id));
+            } catch (CustomerNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Override
@@ -48,7 +60,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void delete(Long id) {
         Customer deleteCustomer=customerRepo.findById(id).orElseThrow();
-        //if (deleteCustomer==null) throw new CustomerNotFoundException();
         customerRepo.delete(deleteCustomer);
     }
 }

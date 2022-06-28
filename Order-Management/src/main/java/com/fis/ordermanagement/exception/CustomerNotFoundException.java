@@ -1,4 +1,7 @@
 package com.fis.ordermanagement.exception;
 
 public class CustomerNotFoundException extends Exception{
+    public CustomerNotFoundException(String message) {
+        super(message);
+    }
 }
