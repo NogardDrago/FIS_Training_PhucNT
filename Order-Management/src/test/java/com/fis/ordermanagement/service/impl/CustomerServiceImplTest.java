@@ -28,18 +28,7 @@ class CustomerServiceImplTest {
 
     @Test
     void save() {
-            CustomerDTO customerDTO = CustomerDTO.builder()
-                    .name("Nguyen Van A")
-                    .address("Ha Noi")
-                    .mobile("0941561672")
-                    .build();
 
-            customerService.save(customerDTO);
-
-            CustomerDTO c = customerService.findById(10L);
-            assertEquals("Ha Noi",c.getAddress());
-            assertEquals("0941561672",c.getMobile());
-            assertEquals("Nguyen Van A",c.getName());
     }
 
     @Test
