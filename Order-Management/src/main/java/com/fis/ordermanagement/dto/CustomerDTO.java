@@ -13,13 +13,13 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Builder
 public class CustomerDTO {
-    @NotBlank
+
     private Long id;
-    @NotBlank
+
     private String name;
-    @NotBlank
+
     private String mobile;
-    @NotBlank
+
     private String address;
     public static class Mapper{
         public static CustomerDTO mapCustomer(Customer customer){

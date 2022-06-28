@@ -12,8 +12,8 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Builder
 public class ProductQuantityDTO {
-    @NotBlank
+
     private Long productId;
-    @NotBlank
+
     private Long quantity;
 }

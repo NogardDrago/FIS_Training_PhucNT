@@ -13,8 +13,8 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Builder
 public class CreateOrderDTO {
-    @NotBlank
+
     private Long customerId;
-    @NotBlank
+
     private ArrayList<ProductQuantityDTO> orderItemInfo;
 }

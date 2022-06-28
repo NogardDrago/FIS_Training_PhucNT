@@ -12,10 +12,10 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Builder
 public class NewCustomerDTO {
-    @NotBlank
+
     private String name;
-    @NotBlank
+
     private String mobile;
-    @NotBlank
+
     private String address;
 }

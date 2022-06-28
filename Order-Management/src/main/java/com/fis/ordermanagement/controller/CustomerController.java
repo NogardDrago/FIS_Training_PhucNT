@@ -1,6 +1,7 @@
 package com.fis.ordermanagement.controller;
 
 import com.fis.ordermanagement.dto.CustomerDTO;
+import com.fis.ordermanagement.dto.NewCustomerDTO;
 import com.fis.ordermanagement.model.Customer;
 import com.fis.ordermanagement.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,13 @@ public class CustomerController {
         return new ResponseEntity<>(customerDTO, HttpStatus.OK);
     }
 
+    @PostMapping("/{pageNumber}/{pageSize}")
+    public Page<CustomerDTO> create(@RequestBody NewCustomerDTO createCustomerDTO,
+                                    @PathVariable(name = "pageNumber") Integer pageNumber
+            , @PathVariable(name = "pageSize") Integer pageSize) {
+        Page<CustomerDTO> customerDTOPage = customerService.save(createCustomerDTO, PageRequest.of(pageNumber, pageSize));
+        return customerDTOPage;
+    }
     @DeleteMapping("/{customerId}")
     public ResponseEntity<String> delete(@PathVariable("customerId") Long customerId) {
         customerService.delete(customerId);

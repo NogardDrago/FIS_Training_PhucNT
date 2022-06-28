@@ -15,15 +15,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class OrderDTO {
-    @NotBlank
+
     private Long id;
-    @NotBlank
+
     private LocalDateTime orderDateTime;
-    @NotBlank
+
     private Long customerId;
-    @NotBlank
+
     private Double totalAmount;
-    @NotBlank
+
     private OrderStatus status;
     public static class Mapper {
         public static OrderDTO mapOrder(Order order) {
