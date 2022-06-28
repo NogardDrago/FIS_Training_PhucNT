@@ -15,4 +15,6 @@ public interface OrderService {
     void delete(Long orderId);
     Order addOrderItem(AddOrderItemDTO addOrderItemDTO);
     Order removeOrderItem(RemoveItemDTO removeItemDTO);
+    Order paid(Long orderId);
+    Order cancel(Long orderId);
 }
