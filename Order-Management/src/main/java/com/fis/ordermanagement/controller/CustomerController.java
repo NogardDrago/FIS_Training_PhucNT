@@ -39,7 +39,7 @@ public class CustomerController {
     }
 
     @PostMapping("/{pageNumber}/{pageSize}")
-    public Page<CustomerDTO> create(@RequestBody NewCustomerDTO createCustomerDTO,
+    public Page<CustomerDTO> save(@RequestBody NewCustomerDTO createCustomerDTO,
                                     @PathVariable(name = "pageNumber") Integer pageNumber
             , @PathVariable(name = "pageSize") Integer pageSize) {
         Page<CustomerDTO> customerDTOPage = customerService.save(createCustomerDTO, PageRequest.of(pageNumber, pageSize));
