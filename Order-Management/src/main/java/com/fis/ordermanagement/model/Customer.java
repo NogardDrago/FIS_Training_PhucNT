@@ -1,5 +1,8 @@
 package com.fis.ordermanagement.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -8,6 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name="customer")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +26,9 @@ public class Customer {
     @Column(name="mobile",unique = true)
     private String mobile;
     @NotNull
-    @Column(name="address",unique = true)
+    @Column(name="address",unique = true,length = 100)
     private String address;
+    @OneToMany(mappedBy="customer")
     @Column(name="order_list")
     List<Order> orderList;
 }
